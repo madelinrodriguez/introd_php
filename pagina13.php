@@ -9,44 +9,44 @@
     <h1>Funciones para manipular cadenas</h1>
     <?php
         // substr
-        $cadena = "Hola, Mundo!";
-        $subcadena = substr($cadena, 7, 5); // Obtiene "Mundo"
-        echo "<p>substr: $subcadena</p>";
+        $cadena = "Hola, mundo";
+        echo "substr: " . substr($cadena, 7, 5) . "<br>"; // mundo
 
         // ord
-        $caracter = "A";
-        $valor_ascii = ord($caracter); // Obtiene 65
-        echo "<p>ord: $valor_ascii</p>";
+        $caracter = "H";
+        echo "ord: " . ord($caracter) . "<br>"; // 72
 
         // printf
-        $nombre = "Carlos";
-        $edad = 30;
-        printf("<p>printf: Mi nombre es %s y tengo %d años.</p>", $nombre, $edad);
+        $numero = 123;
+        $texto = "El número es";
+        printf("printf: %s %d<br>", $texto, $numero); // El número es 123
 
         // sprintf
-        $formateado = sprintf("sprintf: Mi nombre es %s y tengo %d años.", $nombre, $edad);
-        echo "<p>$formateado</p>";
+        $formateado = sprintf("sprintf: %s %d<br>", $texto, $numero);
+        echo $formateado; // El número es 123
 
         // strtolower
-        $mayusculas = "HOLA, MUNDO!";
-        $minusculas = strtolower($mayusculas); // Obtiene "hola, mundo!"
-        echo "<p>strtolower: $minusculas</p>";
+        $mayusculas = "HOLA MUNDO";
+        echo "strtolower: " . strtolower($mayusculas) . "<br>"; // hola mundo
 
         // strtoupper
-        $minusculas = "hola, mundo!";
-        $mayusculas = strtoupper($minusculas); // Obtiene "HOLA, MUNDO!"
-        echo "<p>strtoupper: $mayusculas</p>";
+        $minusculas = "hola mundo";
+        echo "strtoupper: " . strtoupper($minusculas) . "<br>"; // HOLA MUNDO
 
-        // ereg
-        $cadena = "123abc";
-        if (ereg("^[0-9]+", $cadena)) {
-            echo "<p>ereg: La cadena comienza con números.</p>";
+        // preg_match (en lugar de ereg)
+        $patron = "/mundo/";
+        if (preg_match($patron, $cadena)) {
+            echo "preg_match: Se encontró 'mundo' en la cadena.<br>";
+        } else {
+            echo "preg_match: No se encontró 'mundo' en la cadena.<br>";
         }
 
-        // eregi
-        $cadena = "Hola Mundo";
-        if (eregi("mundo", $cadena)) {
-            echo "<p>eregi: La cadena contiene 'mundo' (sin distinguir entre mayúsculas y minúsculas).</p>";
+        // preg_match (insensible a mayúsculas y minúsculas en lugar de eregi)
+        $patron_i = "/MUNDO/i";
+        if (preg_match($patron_i, $cadena)) {
+            echo "preg_match (i): Se encontró 'MUNDO' (insensible) en la cadena.<br>";
+        } else {
+            echo "preg_match (i): No se encontró 'MUNDO' (insensible) en la cadena.<br>";
         }
     ?>
 </body>
